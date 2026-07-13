@@ -60,10 +60,12 @@ test("renders every public case-study route", async () => {
 });
 
 test("keeps project data bilingual, unique and backed by zoomable media", async () => {
-  const [data, client, layout, packageJson] = await Promise.all([
+  const [data, client, styles, layout, casePage, packageJson] = await Promise.all([
     readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/portfolio-client.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/projects/[slug]/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
@@ -77,7 +79,9 @@ test("keeps project data bilingual, unique and backed by zoomable media", async 
   assert.match(client, /Math\.min\(3/);
   assert.match(client, /localStorage\.setItem/);
   assert.match(client, /aria-expanded/);
+  assert.match(styles, /\.brand\s*\{[^}]*min-width: 44px;[^}]*min-height: 44px;/s);
   assert.match(layout, /metadataBase: new URL\("https:\/\/portfolio\.renss\.top"\)/);
+  assert.match(casePage, /title: project\.title\.en,/);
   assert.match(layout, /\/og\.png/);
   assert.match(packageJson, /"name": "ren-sishuo-portfolio"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
