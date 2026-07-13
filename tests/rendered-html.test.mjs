@@ -75,6 +75,9 @@ test("keeps project data bilingual, unique and backed by zoomable media", async 
   assert.match(data, /银行 AI 应用与数据智能分析/);
   assert.match(data, /New API 上游/);
   assert.match(data, /Sub2API 上游/);
+  assert.match(data, /From test engineering to enterprise AI delivery/);
+  assert.match(data, /从测试工程到企业 AI 解决方案交付/);
+  assert.match(data, /作业解析、需求理解、测试用例生成、自动化脚本生成及审计流程/);
   assert.match(client, /showModal\(\)/);
   assert.match(client, /Math\.min\(3/);
   assert.match(client, /localStorage\.setItem/);
