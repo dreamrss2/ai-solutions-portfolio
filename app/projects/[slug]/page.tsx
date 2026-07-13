@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: CasePageProps): Promise<Metad
 
   const canonical = `${portfolioUrl}/projects/${project.slug}`;
   return {
-    title: `${project.title.en} | Ren Sishuo`,
+    title: project.title.en,
     description: project.summary.en,
     alternates: { canonical },
     openGraph: {
