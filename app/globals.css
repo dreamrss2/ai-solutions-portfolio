@@ -94,8 +94,11 @@ a:focus-visible {
 .brand {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   width: fit-content;
+  min-width: 44px;
+  min-height: 44px;
   font-weight: 720;
 }
 
